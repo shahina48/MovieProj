@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block body %}
+<style>
+    body {
+        background-color: #78866B; /* Replace with the desired background color */
+        padding-top: 20px; /* Add some padding from the top of the website */
+    }
+
+    /* Custom Styles for the form */
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="text"],
+    input[type="file"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        outline: none;
+    }
+
+    input[type="submit"] {
+        background-color: #FFA500;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 12px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #FF8C00;
+    }
+</style>
+<div class="container">
+    <div class="row justify-content-center">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="text" name="name" placeholder="Enter your movie name">
+            <input type="text" name="desc" placeholder="Enter movie description">
+            <input type="text" name="year" placeholder="Enter your movie year">
+            <input type="file" name="img">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+     <div class="row justify-content-center mt-3">
+        <a href="{% url 'movieapp:index' %}" class="btn btn-primary">Go to Home</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block body %}
+<style>
+    body {
+        background-color: #78866B; /* Replace with the desired background color */
+        padding-top: 20px; /* Add some padding from the top of the website */
+    }
+
+    /* Custom Styles for the form */
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="text"],
+    input[type="file"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        outline: none;
+    }
+
+    input[type="submit"] {
+        background-color: #FFA500;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 12px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #FF8C00;
+    }
+
+    /* Style for form labels */
+    label {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+</style>
+<div class="container">
+    <div class="row justify-content-center">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="{{ form.name.id_for_label }}">Movie Name:</label>
+                {{ form.name }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.desc.id_for_label }}">Movie Description:</label>
+                {{ form.desc }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.year.id_for_label }}">Movie Year:</label>
+                {{ form.year }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.img.id_for_label }}">Movie Image:</label>
+                {{ form.img }}
+            </div>
+            <input type="submit" value="Submit" class="btn btn-primary btn-block">
+        </form>
+    </div>
+</div>
+{% endblock %}

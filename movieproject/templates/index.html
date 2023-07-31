@@ -1,0 +1,29 @@
+
+{% extends 'base.html' %}
+
+{% block body %}
+
+
+<div class="container">
+    <!-- Add Movie Button -->
+    <a href="{% url 'movieapp:add_movies' %}" class="btn btn-primary add-movie-btn">Add Movie</a>
+
+    <div class="row">
+        {% for msg in movie_list %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <img class="card-img-top" src="{{msg.img.url}}" alt="Card image cap" style="height: 250px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">{{msg.name}}</h5>
+                    <p class="card-text">{{msg.desc}}</p>
+                </div>
+                <div class="card-footer">
+                    <a href="{% url 'movieapp:detail' msg.id %}" class="btn btn-primary">Click here</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
